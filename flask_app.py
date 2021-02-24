@@ -15,7 +15,7 @@ def return_results(results):
         """<head>
                 <title>Toki Toki!</title>
            </head>
-           <p class=page_title>TOKI TOKI </p>
+           <p class=page_title>Toki Toki </p>
            <body>
                 El Toki Pona és un idioma que només consisteix en 120 paraules!
                 <form action="https://ca.wikipedia.org/wiki/Toki_pona">
@@ -43,7 +43,7 @@ def return_results(results):
             form {font-family: sans-serif; font-size: 30px}  
             input {background-color: white; font-family: sans-serif; font-size: 30px}
             button {background-color: #c7ebcf; font-family: sans-serif; font-size: 25px}         
-            p {color: #009879; text-align:center}   
+            p {color: #009879; text-align:center; font-weight: bold}   
         </style>
         """
         + results
