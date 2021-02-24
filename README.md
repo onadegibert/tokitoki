@@ -11,4 +11,4 @@ With the virtual environment activated (source venv/bin/activate), run the follo
 (venv) $ python main.py
 ```
 ## Run remotely
-Go to 
+Go to [https://tokitokipona.herokuapp.com/](https://tokitokipona.herokuapp.com/)
