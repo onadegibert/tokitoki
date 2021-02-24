@@ -92,13 +92,13 @@ def guess_possible_syntax(sentence, meanings_dict):
             pos.extend(['li','vt','e','n'])
             if len(words) == 6:
                 pos = adj_or_poss(words,5,pos)
+        elif 'li' in words:
+            pos = adj_or_poss(words,1,pos)
+            pos.extend(['li','vi'])
         elif 'vt' in meanings_dict[words[1]].keys():
             pos.extend(['vt','e','n'])
             if len(words) == 5:
                 pos = adj_or_poss(words,3,pos)
-        else:
-            pos = adj_or_poss(words,1,pos)
-            pos.extend(['li','vi'])
     return pos
 
 def analyse_sentence(sentence, meanings_dict, pos):
