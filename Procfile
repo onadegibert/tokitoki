@@ -1,1 +1,1 @@
-web: gunicorn --bind 127.0.0.1:8000 flask_app:app
+web: gunicorn flask_app:app
