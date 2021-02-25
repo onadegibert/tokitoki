@@ -9,10 +9,10 @@ def append_to_pos(key, pos, word, list):
 #TODO preprocess sentence to get pos
 #TODO beautify
 def get_possible_syntax():
-    pro_vi = ['n','vi']
-    pro_vt = ['n','vt', 'e', 'n']
-    pro_vt_adj = ['n','vt', 'e', 'n', 'adj']
-    pro_vt_art = ['n','vt', 'e', 'n', 'poss']
+    pro_vi = ['pro','vi']
+    pro_vt = ['pro','vt', 'e', 'n']
+    pro_vt_adj = ['pro','vt', 'e', 'n', 'adj']
+    pro_vt_art = ['pro','vt', 'e', 'n', 'poss']
     n_vi = ['n','li','vi']
     n_adj_vi = ['n','adj','li','vi']
     n_art_vi = ['n','poss','li','vi']
@@ -35,6 +35,7 @@ def load_dict():
     adjs = list()
     vts = list()
     vis = list()
+    pro = ['mi','sina']
     poss = ['mi', 'sina', 'jan', 'ona']
     for entry in dict_list:
         word = entry.split(' --> ')[0]
@@ -50,11 +51,14 @@ def load_dict():
                 adjs = append_to_pos(key, 'm', word, adjs)
             vts = append_to_pos(key, 'vt', word, vts)
             vis = append_to_pos(key, 'vi', word, vis)
-    return words, processed_dict, nouns, adjs, vts, vis, poss
+    return words, processed_dict, nouns, adjs, vts, vis, poss, pro
 
-def get_sentence(sentence_syntax, nouns, vis, vts, adjs, poss):
+def get_sentence(sentence_syntax, nouns, vis, vts, adjs, poss, pro):
     sentence = list()
     for pos in sentence_syntax:
+        if pos == 'pro':
+            sentence.append(random.choice(pro))
+            sentence_syntax[0] = 'n'
         if pos == 'n':
             sentence.append(random.choice(nouns))
         if pos == 'vt':
@@ -118,10 +122,10 @@ def analyse_sentence(sentence, meanings_dict, pos):
 
 if __name__ == "__main__":
     mode = input("Vols crear una frase (1) o interpretar una (2)?\n")
-    words, meanings_dict, nouns, adjs, vts, vis, poss = load_dict()
+    words, meanings_dict, nouns, adjs, vts, vis, poss, pro = load_dict()
     if mode == '1':
         sentence_syntax = get_sentence_syntax()
-        sentence, pos = get_sentence(sentence_syntax, nouns, vis, vts, adjs, poss)
+        sentence, pos = get_sentence(sentence_syntax, nouns, vis, vts, adjs, poss, pro)
     if mode == '2':
         sentence = input("Escriu la teva frase:\n")
         pos = ''
