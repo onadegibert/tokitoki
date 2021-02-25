@@ -117,14 +117,14 @@ def get_pretty_print(results_dirty):
 
 
 def analyze(sentence):
-    words, meanings_dict, nouns, adjs, vts, vis, poss = load_dict()
+    words, meanings_dict, nouns, adjs, vts, vis, poss, pro = load_dict()
     sentence, words_meanings = analyse_sentence(sentence, meanings_dict, '')
     pretty_print = '<p>' + sentence + '</p>' + get_pretty_print(words_meanings)
     return pretty_print
 
 @app.route("/button")
 def get_random_sentence():
-    words, meanings_dict, nouns, adjs, vts, vis, poss = load_dict()
+    words, meanings_dict, nouns, adjs, vts, vis, poss, pro = load_dict()
     sentence_syntax = get_sentence_syntax()
     sentence, pos = get_sentence(sentence_syntax, nouns, vis, vts, adjs, poss)
     sentence, words_meanings = analyse_sentence(sentence, meanings_dict, pos)
